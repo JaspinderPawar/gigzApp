@@ -33,9 +33,9 @@ router.use('/authorize', authorize);
 
 /* GET home page. */
 /* Purest route */
-router.get('/', function(req, res, next) {
-  res.json({"apiRoot": true});
-});
+// router.get('/', function(req, res, next) {
+//   res.json({"apiRoot": true});
+// });
 
 /* GET logout page. */
 router.get('/logout', authenticationHelpers.isAuthOrRedirect, function(req, res, next) {
