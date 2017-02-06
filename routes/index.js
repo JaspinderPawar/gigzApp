@@ -11,7 +11,7 @@ var authenticationHelpers = require('./authenticationHelpers');
 var api       =  require('./api');
 var authorize =  require('./authorize');
 
-const allowedOrigins = ['http://localhost:4200', 'https://angular2-login-seed.herokuapp.com', 'https://domfarolino.com', 'https://domfarolino.github.io'];
+const allowedOrigins = ['http://localhost:4200', 'https://uatfacewatch.herokuapp.com', 'https://domfarolino.com', 'https://domfarolino.github.io'];
 
 router.use(function(request, response, next) {
   var origin = request.headers.origin;
