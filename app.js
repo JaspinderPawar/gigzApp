@@ -9,7 +9,7 @@ var users = require('./routes/users');
 var app = express();
 
 const options = {
-  index: "index.html"
+  index: "index.dev.html"
 };
 
 if (app.get('env') !== 'production') {
