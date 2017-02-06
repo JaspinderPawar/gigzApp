@@ -1,79 +1,64 @@
-/**
- * Import core modules
- */
-var express        = require('express');
-var session        = require('express-session');
-var path           = require('path');
-var logger         = require('morgan');
-var cookieParser   = require('cookie-parser');
-var bodyParser     = require('body-parser');
-var passport       = require('passport');
-var passportConfig = require('./config/passport'); // all passport configuration and provider logic
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const compression = require('compression');
 
-/**
- * Import main route module
- */
-var routes = require('./routes');
-
+var users = require('./routes/users');
 var app = express();
 
-/**
- * View engine setup
- */
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const options = {
+  index: "index.html"
+};
+
+if (app.get('env') !== 'production') {
+
+  options.index = "index.dev.html";
+
+  // expose node_modules to client app
+  app.use(express.static(__dirname + "/node_modules"));
+}
 
 app.use(logger('dev'));
+app.use(compression());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'my_precious' }));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use(express.static(path.join(__dirname, 'public'), options));
+app.use(express.static(path.join(__dirname, 'app')));
 
-/**
- * PWA Static Exceptions
- */
-app.use('/manifest.json', express.static(__dirname + '/manifest.json'));
-app.use('/192.png', express.static(__dirname + '/192.png'));
-app.use('/144.png', express.static(__dirname + '/144.png'));
-app.use('/96.png', express.static(__dirname + '/96.png'));
+// Routes registration
+// ---
+app.use('/users', users);
 
-/**
- * Link main route module to app
- */
-app.use('/', routes);
-
-/**
- * Extraneous handler functions
- */
-
-// Catch 404 and forward to error handler
+// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// Error handlers
-
-// Development error handler will print stack trace
+// error handlers
+// development error handler
+// will print stacktrace
 if (app.get('env') === 'development') {
+
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       message: err.message,
       error: err
     });
   });
 }
 
-// Production error handler will not leak stacktrace to user
+// production error handler
+// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json({
     message: err.message,
     error: {}
   });

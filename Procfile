@@ -1,1 +1,1 @@
-web: npm run express-prod
+web: node ./bin/www
