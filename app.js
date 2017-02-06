@@ -9,9 +9,9 @@ var users = require('./routes/users');
 var app = express();
 
 const options = {
-  index: "index.html"
+  index: "index.dev.html"
 };
-
+app.use(express.static(__dirname + "/node_modules"));
 if (app.get('env') !== 'production') {
 
   options.index = "index.html";
