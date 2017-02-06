@@ -37,7 +37,7 @@ Some of the open source technologies used in this application are listed below
 
 This repository contains code for ***two*** applications:
 
- - The Angular app which gets served by the [angular-cli](https://github.com/angular/angular-cli) via `ng serve` on `localhost:4200`
+ - The Angular app which gets served by the [angular-cli](https://github.com/angular/angular-cli) via `ng serve` on `localhost:3000`
  - The Express server on which the Angular app depends which is served via `npm run express-dev` or `npm run express-prod` on `localhost:5000`
 
 **It is only necessary to run the Angular app locally** to get up and running. This is because by default the Angular app depends on the
