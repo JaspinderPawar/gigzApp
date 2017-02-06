@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.22-1",
-    "name": "angular-heroku"
+    "version": "1.0.0-beta.19-3",
+    "name": "angular2-login-seed"
   },
   "apps": [
     {
@@ -18,8 +18,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "styles.css"
       ],
       "scripts": [],
       "environments": {

@@ -1,10 +1,10 @@
-import { AngularHerokuPage } from './app.po';
+import { MigrationProjectPage } from './app.po';
 
-describe('angular-heroku App', function() {
-  let page: AngularHerokuPage;
+describe('migration-project App', function() {
+  let page: MigrationProjectPage;
 
   beforeEach(() => {
-    page = new AngularHerokuPage();
+    page = new MigrationProjectPage();
   });
 
   it('should display message saying app works', () => {
