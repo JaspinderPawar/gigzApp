@@ -38,7 +38,10 @@
     "systemjs-builder": "^0.15.17",
     "typescript": "^2.0.3",
     "yargs": "^4.7.1",
-    "compression": "^1.6.2"
+    "compression": "^1.6.2",
+     "nodemon": "^1.11.0",
+    "systemjs": "0.19.39",
+    "concurrently": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
