@@ -1,0 +1,8 @@
+{
+  "ambientDependencies": {
+    "socket-io-client": "github:DefinitelyTyped/DefinitelyTyped/socket.io-client/socket.io-client.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20161015015725"
+  }
+}
