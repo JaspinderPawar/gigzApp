@@ -24,7 +24,7 @@ import { HomeComponent } from "./components/home/home.component";
         FormsModule, ReactiveFormsModule
     ],
       providers:    [ AuthenticationService, UserService,SessionService,EventService],
-    declarations: [
+    declarations: [ 
         AppComponent,
         AboutComponent,
         HomeComponent,
