@@ -26,18 +26,7 @@ var isPublic = typeof window != "undefined";
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-
-       'ts': 'npm:plugin-typescript@4.0.10/lib/plugin.js',
-      'typescript': 'npm:typescript@2.0.3/lib/typescript.js',
-      
-
-      'angular2-datatable': 'npm:angular2-data-table/release/index.js',
-      'lodash': 'npm:lodash/lodash.js',
-      //'ng2-modal' :'node_modules/ng2-modal',
-      "socket.io-client": "node_modules/socket.io-client/dist/socket.io.js",
-      //'angular2-image-upload' :'node_modules/angular2-image-upload'
-
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -47,20 +36,7 @@ var isPublic = typeof window != "undefined";
       },
       rxjs: {
         defaultExtension: 'js'
-      },
-       'angular2-datatable': {
-        defaultExtension: 'js'
-      },
-      // 'ng2-modal':  {
-      //    "main": "index.js",
-      //    "defaultExtension": "js" 
-      // },
-      // 'angular2-image-upload':  {
-      //    "main": "index.js",
-      //    "defaultExtension": "js" 
-      // },
-      
-       'socket.io-client': { main: 'socket.io', format: 'cjs', defaultExtension: 'js' }
+      }
     }
   });
 })(this);
