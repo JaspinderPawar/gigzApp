@@ -44,5 +44,9 @@
     "nodemon": "^1.11.0",
     "systemjs": "0.19.39",
     "concurrently": "^3.0.0"
-  }
+  },
+    "engines": {
+    "node": "6.9.2",
+    "npm": "3.10.9"
+    }
 }
