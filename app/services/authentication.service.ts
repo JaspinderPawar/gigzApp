@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+//import { Observable } from 'rxjs/Rx';
+//import 'rxjs/add/operator/map'
 import { SessionService } from '../services/session.service';
 import { User } from '../models/User';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
 
 
 
@@ -14,7 +19,7 @@ export class AuthenticationService {
     public userName: string;
     public userId: string;
      public image: string;
-    public baseUrl: string = "http://localhost:3000"; 
+    public baseUrl: string = "http://localhost:4000"; 
    
     public get option(): RequestOptions {
         let headers = new Headers({ 'x-access-token': this.token, 'x-key': this.userName });
@@ -29,12 +34,12 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {
+      
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post(this.baseUrl + '/login', JSON.stringify({ username: username, password: password }), { headers: headers })
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-
+                // login successful if there's a jwt token in the response                
                 let token = response.json() && response.json().token;
                 if (token) {
                     // set token property
