@@ -1,0 +1,58 @@
+
+<link href="../content/css/chatreset.css" rel="stylesheet">
+<link href="../content/css/chatstyle.css" rel="stylesheet">
+
+  
+
+ 
+
+<!--<input type="file" (change)="onChange($event)"/>-->
+    <div class="wrapper">
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <input type="text" />
+                <a href="javascript:;" class="search"></a>
+            </div>
+            <ul class="people">
+                <li class="person"  *ngFor="let user of onlineUsers" [ngClass]="{'active':user.selected == true}"  (click)="startChat(user)"  data-chat="person1">
+                    <img [src]="user.thumbnail" alt="" />
+                    <span class="name">{{user.firstname | uppercase}} {{user.lastname | uppercase}}</span>
+                    <span class="time">{{ user.msgDate | date:'shortTime' }} </span>
+                    <span class="preview">{{user.lastMessage}}</span>
+                     <span class="count-notification" *ngIf="user.unreadMsgCount > 0" >{{user.unreadMsgCount}}</span>
+                </li>               
+            </ul>
+        </div>
+        <div class="right">
+            <div class="top"><span>To: <span class="name"> {{chatuser.firstname | uppercase}} {{chatuser.lastname | uppercase}} </span></span></div>
+            
+            <div class="chat active-chat" data-chat="person2">
+                <div class="conversation-start">
+                    <span>Today, 5:38 PM</span>
+                </div>
+                <div *ngFor="let message of messages" class="bubble"  [ngClass]="{'you':message.sender !== authService.userName, 'me': message.sender === authService.userName}">
+                   <div *ngIf="message.type =='text'"> {{message.text}}</div>
+                   <div *ngIf="message.type =='image'">
+                       <img  [src]="message.text" style="max-width:280px" alt="">
+                        </div>
+                </div>               
+            </div> 
+                <span class='text-muted' *ngIf="isUserTyping"><small><i class='fa fa-keyboard-o'></i> {{chatuser.firstname | uppercase}} is typing...</small></span>
+          
+            <div class="write">
+                
+                <a href="javascript:;" (click)="onAttchmentClick()" class="write-link attach">
+                    <div style="display: none">
+                     <input #fileInput type="file" (change)="onChange($event)"/>
+                    </div>
+                </a>
+               
+                 <input [(ngModel)]="message"  id="msgbox" type="text"  placeholder="Type your message here..." (keypress)="keypressHandler($event)"/>
+                <a href="javascript:;" class="write-link smiley"></a>
+                <a href="javascript:;"  (click)="sendMessage()" class="write-link send"></a>
+            </div>
+        </div>
+    </div>
+     </div>
+            

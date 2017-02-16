@@ -6,6 +6,7 @@ import { SessionService } from '../services/session.service';
 import { User } from '../models/User';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import * as io from 'socket.io-client';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
@@ -19,8 +20,9 @@ export class AuthenticationService {
     public userName: string;
     public userId: string;
      public image: string;
-    public baseUrl: string = "http://localhost:4000"; 
-   
+    public baseUrl: string = "http://192.168.0.57:4000"; 
+    public socket;
+
     public get option(): RequestOptions {
         let headers = new Headers({ 'x-access-token': this.token, 'x-key': this.userName });
         headers.append('Content-Type', 'application/json');
@@ -49,6 +51,7 @@ export class AuthenticationService {
                     this.token = token;
                     this.sessionService.authenicated(response.json().user);                     
                     this.user = response.json().user;
+                     this.socket = io(this.baseUrl,{query: this.user});
                    
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
