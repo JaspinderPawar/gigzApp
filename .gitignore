@@ -1,7 +1,8 @@
 #node_modules
-#app/**/*.js
-#app/**/*.js.map
-#typings
+app 
+app/**/*.js
+app/**/*.js.map
+typings
 npm-debug.log
 #public/ng2
 *.bak
